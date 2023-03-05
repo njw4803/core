@@ -3,7 +3,10 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
@@ -12,6 +15,7 @@ public class OrderServiceImpl implements OrderService {
     /**
      * final을 붙이면 기본(new MemoryMemberRepository())으로 할당 또는 생성자로 할당해야한다.
      */
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
